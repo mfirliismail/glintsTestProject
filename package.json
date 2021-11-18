@@ -1,7 +1,6 @@
 {
   "name": "projects",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,6 +8,21 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
-  }
+    "bcrypt": "^5.0.1",
+    "express": "^4.17.1",
+    "joi": "^17.4.2",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.7.1",
+    "sequelize": "^6.9.0",
+    "sequelize-cli": "^6.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/mfirliismail/glintsTestProject.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mfirliismail/glintsTestProject/issues"
+  },
+  "homepage": "https://github.com/mfirliismail/glintsTestProject#readme",
+  "description": ""
 }
