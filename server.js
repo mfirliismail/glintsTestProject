@@ -10,7 +10,7 @@ app.use('/api/v1', router)
 
 
 app.get('/', (req, res) => {
-    return ers.status(200).json({
+    return res.status(200).json({
         status: "success",
         message: "success running a server"
     })
