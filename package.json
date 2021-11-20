@@ -1,28 +1,33 @@
 {
-  "name": "projects",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "bcrypt": "^5.0.1",
-    "express": "^4.17.1",
-    "joi": "^17.4.2",
-    "jsonwebtoken": "^8.5.1",
-    "pg": "^8.7.1",
-    "sequelize": "^6.9.0",
-    "sequelize-cli": "^6.3.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://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@github.com/mfirliismail/glintsTestProject.git"
-  },
-  "bugs": {
-    "url": "https://github.com/mfirliismail/glintsTestProject/issues"
-  },
-  "homepage": "https://github.com/mfirliismail/glintsTestProject#readme",
-  "description": ""
+    "name": "projects",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest",
+        "start": "node index.js",
+        "heroku-release": "node_modules/.bin/sequelize db:migrate && node_modules/.bin/sequelize db:seed:all"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "jest": "^27.3.1",
+        "joi": "^17.4.2",
+        "jsonwebtoken": "^8.5.1",
+        "pg": "^8.7.1",
+        "sequelize": "^6.9.0",
+        "sequelize-cli": "^6.3.0",
+        "supertest": "^6.1.6"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://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@github.com/mfirliismail/glintsTestProject.git"
+    },
+    "bugs": {
+        "url": "https://github.com/mfirliismail/glintsTestProject/issues"
+    },
+    "homepage": "https://github.com/mfirliismail/glintsTestProject#readme",
+    "description": ""
 }
