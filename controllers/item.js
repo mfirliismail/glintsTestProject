@@ -78,11 +78,9 @@ module.exports = {
         try {
             if (field == "price" && sort == "termurah") {
                 const findTermurah = await Item.findAll({
-                    where: {
-                        order: [
-                            ['price', 'ASC'],
-                        ]
-                    }
+                    order: [
+                        ['price', 'ASC'],
+                    ]
                 })
                 if (!findTermurah) {
                     return res.status(400).json({
@@ -97,11 +95,9 @@ module.exports = {
                 })
             } else if (field == "price" && sort == "termahal") {
                 const findTermahal = await Item.findAll({
-                    where: {
-                        order: [
-                            ['price', 'DESC'],
-                        ]
-                    }
+                    order: [
+                        ['price', 'DESC'],
+                    ]
                 })
                 if (!findTermahal) {
                     return res.status(400).json({
@@ -116,11 +112,9 @@ module.exports = {
                 })
             } else if (field == "stock" && sort == "terbanyak") {
                 const findTerbanyak = await Item.findAll({
-                    where: {
-                        order: [
-                            ['stock', 'DESC'],
-                        ]
-                    }
+                    order: [
+                        ['stock', 'DESC'],
+                    ]
                 })
                 if (!findTerbanyak) {
                     return res.status(400).json({
@@ -135,11 +129,9 @@ module.exports = {
                 })
             } else if (field == "stock" && sort == "tersedikit") {
                 const findTersedikit = await Item.findAll({
-                    where: {
-                        order: [
-                            ['stock', 'ASC'],
-                        ]
-                    }
+                    order: [
+                        ['stock', 'ASC'],
+                    ]
                 })
                 if (!findTersedikit) {
                     return res.status(400).json({
@@ -154,11 +146,9 @@ module.exports = {
                 })
             } else if (field == "date" && sort == "terbaru") {
                 const findTerbaru = await Item.findAll({
-                    where: {
-                        order: [
-                            ['createdAt', 'ASC'],
-                        ]
-                    }
+                    order: [
+                        ['createdAt', 'DESC'],
+                    ]
                 })
                 if (!findTerbaru) {
                     return res.status(400).json({
@@ -173,11 +163,9 @@ module.exports = {
                 })
             } else if (field == "date" && sort == "terlama") {
                 const findTerlama = await Item.findAll({
-                    where: {
-                        order: [
-                            ['createdAt', 'DESC'],
-                        ]
-                    }
+                    order: [
+                        ['createdAt', 'ASC'],
+                    ]
                 })
                 if (!findTerlama) {
                     return res.status(400).json({
@@ -247,14 +235,14 @@ module.exports = {
         const id = req.params.id
         try {
             const update = await Item.update({
-                where: {
-                    id: id
-                }
-            }, {
                 name: body.name,
                 stock: body.stock,
                 price: body.price,
                 category: body.category
+            }, {
+                where: {
+                    id: id
+                }
             })
 
             if (!update) {
@@ -278,15 +266,7 @@ module.exports = {
 
 
         } catch (error) {
-            if (
-                error.name === 'SequelizeDatabaseError' &&
-                error.parent.routine === 'enum_in'
-            ) {
-                return res.status(400).json({
-                    status: 'failed',
-                    message: 'Perkakas, Sembako, MCK, Snack, Minuman, Pakaian and Others only for Category Data Item',
-                });
-            }
+            console.log(error)
             return res.status(500).json({
                 status: 'failed',
                 message: 'internal server error',
@@ -307,7 +287,10 @@ module.exports = {
                     message: "cannot delete item"
                 })
             }
-
+            return res.status(200).json({
+                status: "success",
+                message: "success deleted item"
+            })
         } catch (error) {
             return res.status(500).json({
                 status: "failed",
@@ -316,7 +299,7 @@ module.exports = {
         }
     },
     getAllItemByCategory: async(req, res) => {
-        const category = req.query.category
+        const category = req.params.category
         try {
             const findAll = await Item.findAll({
                 where: {
@@ -342,17 +325,17 @@ module.exports = {
             })
         }
     },
-    searchItem: (req, res) => {
-        const keyword = req.query.keyword
+    searchItem: async(req, res) => {
+        const keyword = req.params.keyword
         try {
-            const find = await Item.find({
+            const find = await Item.findAll({
                 where: {
-                    title: {
+                    name: {
                         [Op.iLike]: '%' + keyword + '%'
                     }
                 }
             })
-            if (!find) {
+            if (find.length == 0) {
                 return res.status(400).json({
                     status: "failed",
                     message: "cannot find item"
