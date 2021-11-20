@@ -65,6 +65,7 @@ module.exports = {
                     message: 'Perkakas, Sembako, MCK, Snack, Minuman, Pakaian and Others only for Category Data Item',
                 });
             }
+            console.log(error)
             return res.status(500).json({
                 status: 'failed',
                 message: 'internal server error',
