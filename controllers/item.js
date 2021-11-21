@@ -246,7 +246,7 @@ module.exports = {
                 }
             })
 
-            if (update == null) {
+            if (!update[0]) {
                 return res.status(400).json({
                     status: "failed",
                     message: "cannot update item"
