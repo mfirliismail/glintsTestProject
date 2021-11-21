@@ -320,10 +320,20 @@ module.exports = {
                 data: findAll
             })
         } catch (error) {
+            if (
+                error.name === 'SequelizeDatabaseError' &&
+                error.parent.routine === 'enum_in'
+            ) {
+                return res.status(400).json({
+                    status: 'failed',
+                    message: 'Perkakas, Sembako, MCK, Snack, Minuman, Pakaian, Electronics and Others only for Category Data Item',
+                });
+            }
+            console.log(error)
             return res.status(500).json({
-                status: "failed",
-                message: "internal server error"
-            })
+                status: 'failed',
+                message: 'internal server error',
+            });
         }
     },
     searchItem: async(req, res) => {
