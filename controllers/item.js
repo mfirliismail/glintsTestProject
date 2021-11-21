@@ -258,6 +258,13 @@ module.exports = {
                 }
             })
 
+            if (!findOne) {
+                return res.status(400).json({
+                    status: "failed",
+                    message: "cannot find item"
+                })
+            }
+
             return res.status(200).json({
                 status: "success",
                 message: "success updated data",
