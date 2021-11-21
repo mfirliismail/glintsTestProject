@@ -3,7 +3,7 @@ const supertest = require('supertest');
 
 test("POST /api/v1/stock/in/:id", async() => {
     const data = {
-        name: "Headset Sony1",
+        name: "Headset Sony2",
         stock: 40,
         price: 1200000,
         category: "Electronics"
@@ -24,7 +24,7 @@ test("POST /api/v1/stock/in/:id", async() => {
 
 test("GET /api/v1/stock/history/in/:itemId", async() => {
     const data = {
-        name: "Headset Gaming Fantech1",
+        name: "Headset Gaming Fantech2",
         stock: 40,
         price: 300000,
         category: "Electronics"
@@ -44,7 +44,7 @@ test("GET /api/v1/stock/history/in/:itemId", async() => {
 
 test("POST /api/v1/stock/out/:id", async() => {
     const data = {
-        name: "Mouse Gaming1",
+        name: "Mouse Gaming2",
         stock: 20,
         price: 1800000,
         category: "Electronics"
@@ -64,7 +64,7 @@ test("POST /api/v1/stock/out/:id", async() => {
 
 test("GET /api/v1/stock/history/out/:itemId", async() => {
     const data = {
-        name: "Headset SteelSeries1",
+        name: "Headset SteelSeries2",
         stock: 40,
         price: 2199000,
         category: "Electronics"

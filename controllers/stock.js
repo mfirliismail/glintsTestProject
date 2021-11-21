@@ -44,7 +44,6 @@ module.exports = {
             })
 
         } catch (error) {
-            console.log(error)
             return res.status(500).json({
                 status: "failed",
                 message: "internal server error"
@@ -148,7 +147,6 @@ module.exports = {
                 })
             }
         } catch (error) {
-            console.log(error)
             return res.status(500).json({
                 status: "failed",
                 message: "internal server error"
